@@ -1,0 +1,276 @@
+@charset "utf-8";
+
+:root {
+    --bg: #f4f4f2;
+    --bg-soft: #ecebe7;
+    --text: #161616;
+    --sub: #707070;
+    --line: #d8d5cf;
+    --point: #1e1e1e;
+    --white: #ffffff;
+    --shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    --radius: 24px;
+}
+
+/* 다크모드 */
+body.dark-mode {
+    --bg: #1a1a1a;
+    --bg-soft: #232323;
+    --text: #f5f5f5;
+    --sub: #a0a0a0;
+    --line: #3a3a3a;
+    --white: #262626;
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* body는 이미 변수 사용 중이라 거의 자동 반영됨 */
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* 토글 버튼 */
+.theme-toggle {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 10000;
+    padding: 12px 18px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+}
+
+/* 다크모드에서 추가 보정 */
+body.dark-mode .hero {
+    background:
+        radial-gradient(circle at 78% 28%, rgba(120, 140, 120, 0.25), transparent 25%),
+        radial-gradient(circle at 84% 44%, rgba(160, 140, 100, 0.2), transparent 25%),
+        linear-gradient(180deg, #1a1a1a 0%, #121212 100%);
+}
+
+body.dark-mode .section {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .index-card,
+body.dark-mode .profile-card,
+body.dark-mode .project-mini-card,
+body.dark-mode .part-item,
+body.dark-mode .outcome-card,
+body.dark-mode .summary-box,
+body.dark-mode .detail-sheet,
+body.dark-mode .project-detail-modal {
+    background: var(--white);
+    border-color: var(--line);
+    color: var(--text);
+}
+
+body.dark-mode .mini-tags span,
+body.dark-mode .part-meta span,
+body.dark-mode .tool-badges span,
+body.dark-mode .tag {
+    background: #262626;
+    border-color: #3a3a3a;
+    color: #f3f3f3;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 body.dark-mode p {
+    color: #ffffff;
+}
+
+body.dark-mode p {
+    color: #cfcfcf;
+}
+
+body.dark-mode .bar {
+    background: #3a3a3a;
+}
+
+body.dark-mode .bar>span {
+    background: #cfc9bc;
+    /* 기존 톤 유지 */
+}
+
+body.dark-mode {
+    --text: #f5f5f5;
+    --sub: #a0a0a0;
+}
+
+/* 모달 전체 텍스트 */
+body.dark-mode .project-modal,
+body.dark-mode .project-detail-modal {
+    color: #f5f5f5;
+}
+
+/* 제목 */
+body.dark-mode .project-modal h1,
+body.dark-mode .project-modal h2,
+body.dark-mode .project-modal h3 {
+    color: #ffffff;
+}
+
+/* 일반 텍스트 */
+body.dark-mode .project-modal p,
+body.dark-mode .project-modal span,
+body.dark-mode .project-modal li {
+    color: #cfcfcf;
+}
+
+body.dark-mode .detail-flow__box {
+    background: #2a2a2a;
+    color: #ffffff;
+}
+
+body.dark-mode .detail-flow__list li {
+    background: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .detail-flow__arrow {
+    color: #888;
+}
+
+body.dark-mode .meta-row span {
+    color: #aaa;
+}
+
+body.dark-mode .detail-block h4 {
+    color: #fff;
+}
+
+body.dark-mode .detail-cover__card figcaption {
+    color: #cfcfcf;
+}
+
+body.dark-mode .project-detail-modal {
+    background: #1f1f1f;
+}
+
+body.dark-mode .detail-sheet {
+    background: #262626;
+    border: 1px solid #333;
+}
+
+body.dark-mode .project-modal,
+body.dark-mode .project-detail-modal {
+    color: #eaeaea;
+}
+
+body.dark-mode .project-modal h1,
+body.dark-mode .project-modal h2,
+body.dark-mode .project-modal h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .project-modal p,
+body.dark-mode .project-modal span,
+body.dark-mode .project-modal li {
+    color: #cfcfcf;
+}
+
+.theme-switch {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 10000;
+    width: 74px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid #1f1f1f;
+    border-radius: 999px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.theme-switch__thumb {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #000000;
+    margin-left: 7px;
+    transform: translateX(33px);
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+/* 다크모드일 때 */
+body.dark-mode .theme-switch {
+    background: transparent;
+    border-color: #ffffff;
+}
+
+body.dark-mode .theme-switch__thumb {
+    background: #ffffff;
+    transform: translateX(0);
+}
+
+.theme-switch-wrap {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme-switch {
+    position: static;
+}
+
+.theme-switch-hint {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    animation: themeHintMove 1.1s ease-in-out infinite;
+    pointer-events: none;
+    user-select: none;
+}
+
+body:not(.dark-mode) .theme-switch-hint {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+@keyframes themeHintMove {
+    0% {
+        transform: translateX(0);
+        opacity: 0.45;
+    }
+
+    50% {
+        transform: translateX(8px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 0.45;
+    }
+}
+
+body:not(.dark-mode) .scroll-text {
+    color: rgba(0, 0, 0, 0.4);
+}

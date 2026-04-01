@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+/* ===== Scrollbar: clean version ===== */
+
+/* Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.35) transparent;
+}
+
+body.dark-mode {
+    scrollbar-color: #ffffff transparent;
+}
+
+/* Chrome / Edge / Safari */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 999px;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* dark mode */
+body.dark-mode html::-webkit-scrollbar-thumb,
+body.dark-mode body::-webkit-scrollbar-thumb {
+    background: #ffffff;
+}
+
+body.dark-mode html::-webkit-scrollbar-thumb:hover,
+body.dark-mode body::-webkit-scrollbar-thumb:hover {
+    background: #d9d9d9;
+}
