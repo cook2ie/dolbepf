@@ -1184,3 +1184,41 @@ body.modal-open {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1.03);
 }
+
+.modal-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.modal-tool-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.modal-tool-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    display: block;
+}
+
+.modal-tool-label {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1;
+}
+
+body.dark-mode .modal-tool-item {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .modal-tool-label {
+    color: #f3f3f3;
+}

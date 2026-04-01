@@ -595,7 +595,7 @@
                                 </div>
                                 <div class="detail-meta__row">
                                     <span>사용툴</span>
-                                    <p id="modalTools"></p>
+                                    <div id="modalTools" class="modal-tools"></div>
                                 </div>
                             </div>
 
@@ -676,6 +676,43 @@
             </ul>
         </div>
     `).join('');
+    }
+
+    const toolIconMap = {
+        "Photoshop": "images/tools/ps.png",
+        "Illustrator": "images/tools/ai.png",
+        "Rhino": "images/tools/rhino.png",
+        "D5 Render": "images/tools/d5.png",
+        "Enscape": "images/tools/en.png",
+    };
+
+    function renderTools(toolsText = '') {
+        if (!modalTools) return;
+
+        modalTools.innerHTML = '';
+
+        const tools = toolsText
+            .split('·')
+            .map(tool => tool.trim())
+            .filter(Boolean);
+
+        tools.forEach((tool) => {
+            const item = document.createElement('div');
+            item.className = 'modal-tool-item';
+
+            const img = document.createElement('img');
+            img.className = 'modal-tool-icon';
+            img.src = toolIconMap[tool] || 'images/tools/default.png';
+            img.alt = tool;
+
+            const label = document.createElement('span');
+            label.className = 'modal-tool-label';
+            label.textContent = tool;
+
+            item.appendChild(img);
+            item.appendChild(label);
+            modalTools.appendChild(item);
+        });
     }
 
     const projectData = {
@@ -813,7 +850,7 @@
             title: "한국공간디자인학회\nK-공간디자인 워크숍",
             period: "2023.06 ~ (2박3일)",
             contribution: "60% (팀장)",
-            tools: "Photoshop · Illustrator · Rhino · D5 Render",
+            tools: "Photoshop · Illustrator · Rhino · Enscape",
             overview: "도시민과 관광객에게 상업공간을 제외한 쉼터 제공이 부족하며 유적지 특성상 보존을 위한 직접적 체험이 불가능하다는 점에서 첨성대의 형태적, 의미적 요소를 따와 경주의 문화·역사적 장소를 전망할 수 있는 전망대를 디자인했습니다.",
             coverImage: "images/team-1.png",
             coverCaption: "<팀 프로젝트>",
@@ -832,7 +869,7 @@
             title: "캡스톤디자인 우즈벡키스탄\n타슈켄트 도시마케팅 활동",
             period: "2024.06 ~ (약2주)",
             contribution: "60% (팀장)",
-            tools: "Photoshop · Illustrator · Rhino · D5 Render",
+            tools: "Photoshop · Illustrator · Rhino",
             overview: "우즈벡키스탄 타슈켄트 지역 도시마케팅을 진행하며 뜨거운 타슈켄트 지역적 특성을 관광객들에게 긍정적으로 다가갈 수 있도록 이곳의 열기는 티무르의 영광의 기운이다 라는 마케팅을 진행하였고, Would you BACKistan? 이라는 슬로건으로 우즈벡의 발음과 다시 돌아오고싶은 도시라는 슬로건을 내세워 도시마케팅을 진행하였습니다.",
             coverImage: "images/team-2.png",
             coverCaption: "<팀 프로젝트>",
@@ -890,7 +927,7 @@
             title: "동아리 활동\n도심 캣 타운 디자인 프로젝트",
             period: "2022.09 ~ (약 15주)",
             contribution: "100%",
-            tools: "Photoshop · Illustrator · Rhino · D5 Render",
+            tools: "Photoshop · Illustrator · Rhino · Enscape",
             overview: "자연의 훼손을 최소화하며 도시 자생동물 문제 중 길고양이에게 관한 문제는 각기 다른 지역에서 발생하므로 다양한 지역에 적용시킬 수 있도록 대입 가능한 길고양이 산책로 프로토타입을 디자인하고 제안했습니다.",
             coverImage: "images/personal-2.png",
             coverCaption: "<개인 프로젝트>",
@@ -947,7 +984,7 @@
             title: "진주시 관문지역 도시조형물 및\n광장 디자인공모전",
             period: "2023.09 ~ (약 6주)",
             contribution: "아이디어 제안 · 보드 제작",
-            tools: "Photoshop · Illustrator · Rhino · D5 Render",
+            tools: "Photoshop · Illustrator · Rhino · Enscape",
             overview: "진주역을 이용하는 고객들에게 진주역 앞 광장공간에서 진주성의 역사·문화적 특징을 활용하며 자연친화적인 휴식공간을 제공하여 진주시 도시 이미지를 각인시키고, 대기시간이 긴 진주역 이용고객들의 편의성을 상승시키는 광장을 디자인했습니다.",
             coverImage: "images/contest-2.png",
             coverCaption: "<공모전>",
@@ -970,7 +1007,7 @@
         if (modalProjectTitle) modalProjectTitle.innerHTML = nlToBr(data.title || '');
         if (modalPeriod) modalPeriod.textContent = data.period || '';
         if (modalContribution) modalContribution.textContent = data.contribution || '';
-        if (modalTools) modalTools.textContent = data.tools || '';
+        renderTools(data.tools || '');
         if (modalOverview) modalOverview.textContent = data.overview || '';
 
         if (modalCoverImage) {
