@@ -9,7 +9,7 @@
 
 ## 🔗 Live Site
 
-👉 [포트폴리오 바로가기](여기에_링크)
+👉 [포트폴리오 바로가기](https://cook2ie.github.io/dolbepf/)
 
 ---
 
